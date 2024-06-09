@@ -1,0 +1,61 @@
+-- Conky configuration script
+
+conky.config = {
+    -- Various settings
+    background = true,
+    double_buffer = true,
+    update_interval = 1,
+    imlib_cache_size = 0,
+
+    -- Placement
+    alignment = 'top_right',
+    gap_x = 10,
+    gap_y = 20,
+    minimum_height = 10,
+    minimum_width = 635,  -- Adjusted width
+    maximum_width = 635 ,  -- Adjusted width
+
+    -- Graphical
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_shades = false,
+    draw_outline = false,
+
+    -- Textual
+    format_human_readable = true,
+    font = 'ubuntu:size=11:bold',
+    max_text_width = 0,
+    short_units = true,
+    use_xft = true,
+    xftalpha = 1,
+
+    -- Windows
+    own_window = true,
+    own_window_argb_value = 0,
+    own_window_argb_visual = true,
+    own_window_type = 'normal',  -- options are: normal/override/dock/desktop/panel
+
+    -- Colours
+    default_color = '#000000',
+    color1 = '#68A1DF',
+    color2 = '#FAA916',
+    color3 = '#FBFFFE',
+}
+
+conky.text = [[
+#------------+
+# BATTERY
+#------------+
+${voffset 10}${color1}${font :size=14:bold}BATTERY ${hr 2}${font}
+${voffset 5}${color1}Charge : ${color3}${battery_percent BAT0}%${color1}${alignr}Status : ${color3}${battery BAT0}
+${color2}${battery_bar 13, 600 BAT0}
+
+#------------+
+# BATTERY HEALTH
+#------------+
+${voffset 10}${color1}${font :size=14:bold}BATTERY HEALTH ${hr 2}${font}
+${voffset 5}${color1}Health : ${color3}${exec acpi -i | grep -oP 'Battery \d: \K\w+'}${color1}${alignr}Cycle Count : ${color3}${exec cat /sys/class/power_supply/BAT0/cycle_count}${color1}${alignr} ${color3}${exec acpi -i | grep -oP 'last full capacity \K\d+%' | awk '{print $1}' 2>/dev/null || echo "N/A"}${color1}
+${voffset 5}${color1}Technology : ${color3}${exec cat /sys/class/power_supply/BAT0/technology}${color1}${alignr}Capacity : ${color3}${cat /sys/class/power_supply/BAT0/capacity} mAh / ${cat /sys/class/power_supply/BAT0/capacity_level} mAh (${battery_percent BAT0}%) Wh
+
+
+]]
