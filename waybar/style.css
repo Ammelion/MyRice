@@ -1,0 +1,77 @@
+* {
+  font-family: "VCR OSD Mono","JetBrains Mono Nerd Font", sans-serif;
+  font-size: 12px;
+}
+
+window#waybar {
+  background: transparent;
+  border-radius: 5px;
+  border: 2px solid red;
+  color: red;
+}
+
+.modules-left {
+  margin: 5px;
+}
+
+#workspaces button {
+  padding:0px;
+  color: #ff0000;
+}
+
+#workspaces button.active {
+  color: #dad60c;
+}
+
+#workspaces button:hover {
+  background: rgba(122, 162, 247, 0);
+  text-shadow: inherit;
+}
+
+#window {
+  padding: 0 10px;
+}
+
+#clock {
+  margin: 5px;
+}
+
+#custom-media,
+#custom-brightness,
+#pulseaudio,
+#battery,
+#tray,
+#custom-wlogout {
+  margin: 5px;
+}
+
+#custom-media {
+}
+
+#pulseaudio {
+}
+
+#battery {
+}
+
+#battery.warning {
+}
+
+#battery.critical {
+}
+
+#tray {
+}
+
+#custom-wlogout {
+  margin-right: 20px;
+}
+
+tooltip {
+  background: black;
+  border: 1px solid red;
+}
+
+tooltip label {
+  color: yellow;
+}
